@@ -13,6 +13,8 @@
         <action
             android:id="@+id/action_addFragment_to_listFragment"
             app:destination="@id/listFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/listFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -23,10 +25,18 @@
         tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_addFragment"
-            app:destination="@id/addFragment" />
+            app:destination="@id/addFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
+            app:destination="@id/updateFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
@@ -36,6 +46,8 @@
         <action
             android:id="@+id/action_updateFragment_to_listFragment"
             app:destination="@id/listFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/listFragment"
             app:popUpToInclusive="true" />
     </fragment>
