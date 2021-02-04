@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/addTodoId"
+        android:id="@+id/addTodoId_menu"
         android:title="@string/ok"
         android:icon="@drawable/ic_check"
         app:showAsAction="ifRoom"
