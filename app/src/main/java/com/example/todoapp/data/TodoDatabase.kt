@@ -1,12 +1,12 @@
 package com.example.todoapp.data
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.example.todoapp.TodoUtils
 import com.example.todoapp.data.models.TodoData
 
 @Database(entities = [TodoData::class], version = 1, exportSchema = false)
+@TypeConverters(TodoUtils::class)
 abstract class TodoDatabase : RoomDatabase() {
     abstract val todoDao: TodoDao
 
