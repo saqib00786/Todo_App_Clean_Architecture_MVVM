@@ -50,5 +50,8 @@
             app:exitAnim="@anim/slide_out_left"
             app:popUpTo="@id/listFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="currentItem"
+            app:argType="com.example.todoapp.data.models.TodoData" />
     </fragment>
 </navigation>

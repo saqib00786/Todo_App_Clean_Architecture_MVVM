@@ -10,6 +10,7 @@ import com.example.todoapp.R
 import com.example.todoapp.TodoUtils
 import com.example.todoapp.data.models.TodoData
 import com.example.todoapp.databinding.FragmentAddBinding
+import com.example.todoapp.viewModels.SharedViewModel
 import com.example.todoapp.viewModels.TodoViewModel
 
 
@@ -18,6 +19,7 @@ class AddFragment : Fragment() {
     private val binding get() = mBinding!!
 
     private val viewModel : TodoViewModel by viewModels()
+    private val sharedViewModel : SharedViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +27,7 @@ class AddFragment : Fragment() {
     ): View? {
         mBinding = FragmentAddBinding.inflate(inflater, container, false)
 
+        mBinding?.spinnerIdAdd?.onItemSelectedListener = sharedViewModel.listner
 
         setHasOptionsMenu(true)
         return binding.root
@@ -42,7 +45,7 @@ class AddFragment : Fragment() {
     }
 
     private fun insertDB() {
-        val utils = TodoUtils()
+
         val mTitle = mBinding?.titleIdAdd?.text.toString()
         val mPriority = mBinding?.spinnerIdAdd?.selectedItem.toString()
         val mDescription = mBinding?.descriptionIdAdd?.text.toString()
@@ -52,7 +55,7 @@ class AddFragment : Fragment() {
                 0,
                 mTitle,
                 mDescription,
-                utils.parsPriority(mPriority)
+                sharedViewModel.parsPriority(mPriority)
             )
             viewModel.insertData(todoItem)
             Toast.makeText(requireContext(),"Added Successfully",Toast.LENGTH_SHORT)
@@ -60,7 +63,7 @@ class AddFragment : Fragment() {
             val action = AddFragmentDirections.actionAddFragmentToListFragment()
             findNavController().navigate(action)
         }else{
-            Toast.makeText(requireContext(),"Error while adding data",Toast.LENGTH_SHORT)
+            Toast.makeText(requireContext(),"Fill all the fields",Toast.LENGTH_SHORT)
                 .show()
         }
     }
